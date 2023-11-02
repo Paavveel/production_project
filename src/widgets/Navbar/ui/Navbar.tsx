@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './Navbar.module.scss';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import cls from './Navbar.module.scss';
 
 interface NavBarProps {
   className?: string;
 }
 
-export const NavBar: FC<NavBarProps> = ({ className }) => {
-  return (
+export const NavBar: FC<NavBarProps> = ({ className }) => (
     <div className={classNames(cls.navbar, {}, [className])}>
       <div className={cls.links}>
         <AppLink className={cls.mainLink} to='/' theme={AppLinkTheme.SECONDARY}>
@@ -20,4 +19,3 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
       </div>
     </div>
   );
-};
