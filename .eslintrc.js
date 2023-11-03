@@ -27,7 +27,7 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
-    'i18next/no-literal-string': ['warn', { markupOnly: true }],
+    'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
     'func-names': 'off',
   },
   globals: {
@@ -38,6 +38,12 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       rules: {
         'no-undef': 'off',
+      },
+    },
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
       },
     },
   ],
