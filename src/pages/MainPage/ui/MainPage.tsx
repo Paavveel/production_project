@@ -6,7 +6,7 @@ interface MainPageProps {
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('main');
 
   return <div>{t('Главная страница')}</div>;
 };
