@@ -1,5 +1,6 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
 
