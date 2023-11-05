@@ -8,5 +8,8 @@
   "throw error": "throw error",
   "Короткий язык": "Ru",
   "increment": "Увеличить",
-  "decrement": "Уменьшить"
+  "decrement": "Уменьшить",
+  "Войти": "Войти",
+  "Введите username": "Введите username",
+  "Введите password": "Введите password"
 }

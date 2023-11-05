@@ -7,5 +7,8 @@
   "throw error": "throw error",
   "Короткий язык": "En",
   "increment": "increment",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "Войти": "Login",
+  "Введите username": "Enter username",
+  "Введите password": "Enter password"
 }
