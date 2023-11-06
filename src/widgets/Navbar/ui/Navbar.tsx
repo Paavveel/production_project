@@ -27,6 +27,7 @@ export const Navbar: FC<NavBarProps> = ({ className }) => {
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
+    setIsAuthModal(false);
   }, [dispatch]);
 
   if (authData) {
@@ -44,7 +45,7 @@ export const Navbar: FC<NavBarProps> = ({ className }) => {
       <Button className={cls.links} theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>
         {t('Войти')}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
     </div>
   );
 };
