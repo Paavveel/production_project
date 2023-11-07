@@ -13,7 +13,7 @@ interface LoginModalProps {
 export const LoginModal: FC<LoginModalProps> = ({ className, isOpen, onClose }) => (
   <Modal className={classNames('', {}, [className])} isOpen={isOpen} onClose={onClose} lazy>
     <Suspense fallback={<Loader />}>
-      <LoginFormAsync />
+      <LoginFormAsync onSuccess={onClose} />
     </Suspense>
   </Modal>
 );

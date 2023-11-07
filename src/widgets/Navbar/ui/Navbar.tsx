@@ -27,7 +27,6 @@ export const Navbar: FC<NavBarProps> = ({ className }) => {
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
-    setIsAuthModal(false);
   }, [dispatch]);
 
   if (authData) {
