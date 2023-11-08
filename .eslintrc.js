@@ -27,6 +27,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'no-unused-vars': 'off',
+    'no-undef': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
