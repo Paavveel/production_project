@@ -1,12 +1,17 @@
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+  const { isDev } = options;
+
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   };
+
+  const babelLoader = buildBabelLoader(options);
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
@@ -25,5 +30,5 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     exclude: /node_modules/,
   };
 
-  return [typescriptLoader, cssLoader, svgLoader, fileLoader];
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 }
