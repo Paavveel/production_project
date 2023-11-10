@@ -20,11 +20,11 @@ export const Select: FC<SelectProps> = memo(({ className, label, options, value,
   const optionsList = useMemo(
     () =>
       options?.map((opt) => (
-        <option key={opt.value} className={cls.option} value={value}>
+        <option key={opt.value} className={cls.option} value={opt.value}>
           {opt.content}
         </option>
       )),
-    [options, value]
+    [options]
   );
 
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
