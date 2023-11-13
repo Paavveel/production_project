@@ -49,7 +49,7 @@ describe('profileSlice', () => {
       data: undefined,
       form: undefined,
     };
-    expect(profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(data, ''))).toEqual({
+    expect(profileReducer(state as ProfileSchema, fetchProfileData.fulfilled(data, '1', ''))).toEqual({
       isLoading: false,
       data,
       form: data,
