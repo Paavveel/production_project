@@ -24,6 +24,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+    'react/no-array-index-key': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'no-unused-vars': 'off',
