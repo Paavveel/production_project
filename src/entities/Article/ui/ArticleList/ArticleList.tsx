@@ -22,13 +22,10 @@ export const ArticleList = memo(({ className, articles, isLoading, view = Articl
     <ArticleListItem className={cls.card} key={article.id} article={article} view={view} />
   );
 
-  if (isLoading) {
-    return <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>{getSkeletons(view)}</div>;
-  }
-
   return (
     <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
       {articles.length > 0 ? articles.map(renderArticle) : null}
+      {isLoading && getSkeletons(view)}
     </div>
   );
 });
