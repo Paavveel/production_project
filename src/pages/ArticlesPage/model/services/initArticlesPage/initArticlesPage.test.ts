@@ -1,3 +1,4 @@
+import { ArticleSortField } from 'entities/Article';
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
@@ -15,13 +16,43 @@ describe('initArticlesPage', () => {
         isLoading: false,
         hasMore: true,
         _inited: false,
+        sort: ArticleSortField.CREATED,
+        order: 'asc',
+        search: '',
       },
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk(new URLSearchParams());
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(4);
     expect(fetchArticlesList).toHaveBeenCalled();
+  });
+
+  it('success with searchParams', async () => {
+    const thunk = new TestAsyncThunk(initArticlesPage, {
+      articlesPage: {
+        page: 1,
+        ids: [],
+        entities: {},
+        limit: 4,
+        isLoading: false,
+        hasMore: true,
+        _inited: false,
+        sort: ArticleSortField.CREATED,
+        order: 'asc',
+        search: '',
+      },
+    });
+
+    await thunk.callThunk(
+      new URLSearchParams({
+        sort: ArticleSortField.TITLE,
+        order: 'desc',
+        search: 'asd',
+      })
+    );
+
+    expect(thunk.dispatch).toHaveBeenCalledTimes(7);
   });
 
   it('fetchArticlesList not called', async () => {
@@ -37,7 +68,7 @@ describe('initArticlesPage', () => {
       },
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk(new URLSearchParams());
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     expect(fetchArticlesList).not.toHaveBeenCalled();
