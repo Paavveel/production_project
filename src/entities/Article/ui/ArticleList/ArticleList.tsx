@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
@@ -12,6 +12,7 @@ interface ArticleListProps {
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -19,25 +20,27 @@ const getSkeletons = (view: ArticleView) =>
     .fill(0)
     .map((_, i) => <ArticleListItemSkeleton className={cls.card} key={i} view={view} />);
 
-export const ArticleList = memo(({ className, articles, isLoading, view = ArticleView.SMALL }: ArticleListProps) => {
-  const { t } = useTranslation();
+export const ArticleList = memo(
+  ({ className, articles, isLoading, view = ArticleView.SMALL, target }: ArticleListProps) => {
+    const { t } = useTranslation();
 
-  const renderArticle = (article: Article) => (
-    <ArticleListItem className={cls.card} key={article.id} article={article} view={view} />
-  );
+    const renderArticle = (article: Article) => (
+      <ArticleListItem className={cls.card} key={article.id} article={article} view={view} target={target} />
+    );
 
-  if (!isLoading && !articles.length) {
+    if (!isLoading && !articles.length) {
+      return (
+        <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+          <Text size={TextSize.L} title={t('Статьи не найдены')} />
+        </div>
+      );
+    }
+
     return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        <Text size={TextSize.L} title={t('Статьи не найдены')} />
+      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+        {articles.length > 0 ? articles.map(renderArticle) : null}
+        {isLoading && getSkeletons(view)}
       </div>
     );
   }
-
-  return (
-    <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-      {articles.length > 0 ? articles.map(renderArticle) : null}
-      {isLoading && getSkeletons(view)}
-    </div>
-  );
-});
+);
