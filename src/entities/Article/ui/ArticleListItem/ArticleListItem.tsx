@@ -46,7 +46,7 @@ export const ArticleListItem = memo(({ className, article, view, target }: Artic
           <img className={cls.img} src={article.img} alt={article.title} />
           {textBlock && <ArticleTextBlockComponent className={cls.textBlock} block={textBlock} />}
           <div className={cls.footer}>
-            <AppLink to={RoutePath.articles_details + article.id}>
+            <AppLink to={RoutePath.article_details + article.id}>
               <Button>{t('Читать далее')}</Button>
             </AppLink>
             {views}
@@ -58,7 +58,7 @@ export const ArticleListItem = memo(({ className, article, view, target }: Artic
 
   return (
     <AppLink
-      to={RoutePath.articles_details + article.id}
+      to={RoutePath.article_details + article.id}
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
       target={target}
     >

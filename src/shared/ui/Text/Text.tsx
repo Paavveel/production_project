@@ -1,9 +1,10 @@
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
   PRIMARY = 'primary',
+  INVERTED = 'inverted',
   ERROR = 'error',
 }
 export enum TextAlign {
