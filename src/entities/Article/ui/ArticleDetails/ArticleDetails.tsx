@@ -11,6 +11,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
 import {
   getArticleDetailsData,
@@ -77,18 +78,21 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
   } else {
     content = (
       <>
-        <div className={cls.avatarWrapper}>
+        <HStack justify='center' max>
           <Avatar size={200} src={article?.img} className={cls.avatar} />
-        </div>
-        <Text className={cls.title} size={TextSize.L} title={article?.title} text={article?.subtitle} />
-        <div className={cls.articleInfo}>
-          <Icon className={cls.icon} Svg={EyeIcon} />
-          <Text text={String(article?.views)} />
-        </div>
-        <div className={cls.articleInfo}>
-          <Icon className={cls.icon} Svg={CalendarIcon} />
-          <Text text={article?.createdAt} />
-        </div>
+        </HStack>
+        <VStack gap='4' max>
+          <Text size={TextSize.L} title={article?.title} text={article?.subtitle} />
+          <HStack gap='8'>
+            <Icon Svg={EyeIcon} />
+            <Text text={String(article?.views)} />
+          </HStack>
+          <HStack gap='8'>
+            <Icon Svg={CalendarIcon} />
+            <Text text={article?.createdAt} />
+          </HStack>
+        </VStack>
+
         {article?.blocks.map(renderBlock)}
       </>
     );
@@ -96,7 +100,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.ArticleDetails, {}, [className])}>{content}</div>
+      <VStack gap='16' className={classNames(cls.ArticleDetails, {}, [className])}>
+        {content}
+      </VStack>
     </DynamicModuleLoader>
   );
 });

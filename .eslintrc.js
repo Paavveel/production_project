@@ -38,7 +38,10 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
-    'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
+    'i18next/no-literal-string': [
+      'warn',
+      { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'align', 'justify', 'gap', 'max'] },
+    ],
     'func-names': 'off',
     'no-param-reassign': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
