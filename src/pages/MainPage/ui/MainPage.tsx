@@ -1,4 +1,3 @@
-import { Counter } from 'entities/Counter';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page/Page';
@@ -10,12 +9,7 @@ interface MainPageProps {
 const MainPage: FC<MainPageProps> = ({ className }) => {
   const { t } = useTranslation('main');
 
-  return (
-    <Page>
-      {t('Главная страница')}
-      <Counter />
-    </Page>
-  );
+  return <Page>{t('Главная страница')}</Page>;
 };
 
 export default MainPage;
