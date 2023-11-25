@@ -40,7 +40,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'i18next/no-literal-string': [
       'warn',
-      { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'align', 'justify', 'gap', 'max'] },
+      { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'align', 'justify', 'gap', 'max', 'role'] },
     ],
     'func-names': 'off',
     'no-param-reassign': 'off',
