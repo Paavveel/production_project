@@ -73,21 +73,47 @@ export const ProfileCard: FC<ProfileCardProps> = ({
           <Avatar src={data?.avatar} />
         </HStack>
       )}
-      <Input value={data?.first} placeholder={t('Ваше имя')} onChange={onChangeFirstname} readonly={readonly} />
-      <Input value={data?.lastname} placeholder={t('Ваша фамилия')} onChange={onChangeLastname} readonly={readonly} />
-      <Input value={data?.age} placeholder={t('Ваша возраст')} onChange={onChangeAge} readonly={readonly} />
-      <Input value={data?.city} placeholder={t('Город')} onChange={onChangeCity} readonly={readonly} />
+      <Input
+        value={data?.first}
+        placeholder={t('Ваше имя')}
+        onChange={onChangeFirstname}
+        readonly={readonly}
+        data-testid='ProfileCard.firstname'
+      />
+      <Input
+        value={data?.lastname}
+        placeholder={t('Ваша фамилия')}
+        onChange={onChangeLastname}
+        readonly={readonly}
+        data-testid='ProfileCard.lastname'
+      />
+      <Input
+        value={data?.age}
+        placeholder={t('Ваша возраст')}
+        onChange={onChangeAge}
+        readonly={readonly}
+        data-testid='ProfileCard.age'
+      />
+      <Input
+        value={data?.city}
+        placeholder={t('Город')}
+        onChange={onChangeCity}
+        readonly={readonly}
+        data-testid='ProfileCard.city'
+      />
       <Input
         value={data?.username}
         placeholder={t('Введите имя пользователя')}
         onChange={onChangeUsername}
         readonly={readonly}
+        data-testid='ProfileCard.username'
       />
       <Input
         value={data?.avatar}
         placeholder={t('Введите ссылку на аватар')}
         onChange={onChangeAvatar}
         readonly={readonly}
+        data-testid='ProfileCard.avatar'
       />
       <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} />
       <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} />

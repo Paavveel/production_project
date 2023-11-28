@@ -18,6 +18,7 @@ import { getProfileValidateErrors } from '../../model/selectors/getProfileValida
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { ValidateProfileError } from '../../model/types/editableProfileCard';
 
 interface editableProfileCardProps {
   className?: string;
@@ -37,6 +38,14 @@ export const EditableProfileCard = memo(({ className, id }: editableProfileCardP
   const dispatch = useAppDispatch();
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
+
+  const validateErrorTranslates = {
+    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
+    [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+  };
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
@@ -103,7 +112,14 @@ export const EditableProfileCard = memo(({ className, id }: editableProfileCardP
       <VStack gap='8' max className={classNames('', {}, [className])}>
         <EditableProfileCardHeader />
         {validateErrors?.length &&
-          validateErrors.map((error) => <Text key={error} theme={TextTheme.ERROR} text={error} />)}
+          validateErrors.map((error) => (
+            <Text
+              key={error}
+              theme={TextTheme.ERROR}
+              text={validateErrorTranslates[error]}
+              data-testid='EditableProfileCard.Error'
+            />
+          ))}
         <ProfileCard
           data={formData}
           isLoading={isLoading}
