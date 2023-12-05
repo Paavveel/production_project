@@ -1,8 +1,8 @@
-import { ArticleList } from 'entities/Article';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { ArticleList } from '@/entities/Article';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,

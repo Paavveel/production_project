@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Button } from 'shared/ui/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/shared/ui/Button/Button';
 import { counterActions } from '../modal/slice/counterSlice';
 import { getCounterValue } from '../modal/selectors/getCounterValue/getCounterValue';
 
