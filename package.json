@@ -18,7 +18,8 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:unit:watch": "jest --config ./config/jest/jest.config.ts --watch",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook"
+    "storybook:build": "build-storybook -c ./config/storybook",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -69,9 +70,11 @@
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-react": "7.29.2",
     "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-unused-imports": "2.0.0",
     "file-loader": "6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "5.5.0",
+    "husky": "7.0.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.5.1",
     "jest-html-reporters": "3.0.10",
