@@ -596,6 +596,13 @@
       "password": "123",
       "roles": ["MANAGER"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "123",
+      "roles": ["ADMIN"],
+      "avatar": "https://media.istockphoto.com/id/1386179512/photo/computer-hacker-stealing-data-from-a-laptop.jpg?b=1&s=170667a&w=0&k=20&c=LlgW42b4MRbfe94527I2gJ4LeZ45mYoFrthp7cA3D7s="
     }
   ],
   "profile": [
