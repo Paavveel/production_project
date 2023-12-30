@@ -18,20 +18,25 @@ interface CommentCardProps {
 export const CommentCard: FC<CommentCardProps> = ({ className, comment, isLoading }) => {
   if (isLoading) {
     return (
-      <div className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
+      <VStack
+        data-testid='CommentCard.Loading'
+        gap='8'
+        max
+        className={classNames(cls.CommentCard, {}, [className, cls.loading])}
+      >
         <div className={cls.header}>
           <Skeleton border='50%' width={30} height={30} />
           <Skeleton className={cls.username} width={100} height={16} />
         </div>
         <Skeleton className={cls.text} width='100%' height={50} />
-      </div>
+      </VStack>
     );
   }
 
   if (!comment) return null;
 
   return (
-    <VStack gap='8' max className={classNames(cls.CommentCard, {}, [className])}>
+    <VStack data-testid='CommentCard.Content' gap='8' max className={classNames(cls.CommentCard, {}, [className])}>
       <AppLink className={cls.header} to={getRouteProfile(comment.user.id)}>
         {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
         <Text className={cls.username} title={comment.user.username} />

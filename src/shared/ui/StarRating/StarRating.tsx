@@ -42,6 +42,8 @@ export const StarRating = memo((props: StarRatingProps) => {
     <div className={className}>
       {stars.map((starNumber) => (
         <Icon
+          data-testid={`StarRating.${starNumber}`}
+          data-selected={currentStarsCount >= starNumber}
           className={classNames(cls.starIcon, { [cls.selected]: isSelected }, [
             currentStarsCount >= starNumber ? cls.hovered : cls.normal,
           ])}
