@@ -34,4 +34,12 @@ describe('user on article details page', () => {
     cy.setRate(4, 'feedback');
     cy.get('[data-selected=true]').should('have.length', 4);
   });
+
+  it('should send rating (on stabs/fixtures)', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+    cy.getByTestId('ArticleDetails.Info');
+    cy.getByTestId('RatingCard').scrollIntoView();
+    cy.setRate(4, 'feedback');
+    cy.get('[data-selected=true]').should('have.length', 4);
+  });
 });
