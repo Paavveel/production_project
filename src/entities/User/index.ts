@@ -4,3 +4,4 @@ export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthDa
 export type { UserSchema, User } from './model/types/user';
 export { userReducer, userActions } from './model/slice/userSlice';
 export { UserRole } from './model/consts/userConsts';
+export { saveJsonSettings } from './model/services/saveJsonSettings';
