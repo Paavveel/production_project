@@ -5,3 +5,4 @@ export type { UserSchema, User } from './model/types/user';
 export { userReducer, userActions } from './model/slice/userSlice';
 export { UserRole } from './model/consts/userConsts';
 export { saveJsonSettings } from './model/services/saveJsonSettings';
+export { initAuthData } from './model/services/initAuthData';
